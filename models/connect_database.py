@@ -2,14 +2,14 @@ import mysql.connector
 from dotenv import find_dotenv, load_dotenv
 from os import getenv
 
-from create_database import CreateDatabase
+from .create_database import CreateDatabase
 
 
 class ConnectDatabase:
     """ Class to connect to the database. """
 
     def __init__(self):
-        """ Initialization of the class."""
+        """ Initialization of the class. """
         self.my_base = self.connect()
 
     def connect(self):
@@ -39,7 +39,7 @@ class ConnectDatabase:
         if my_base.is_connected():
             cursor = my_base.cursor()
 
-            cursor.execute(f"SHOW DATABASES LIKE store;")
+            cursor.execute("SHOW DATABASES LIKE 'store';")
             my_database = cursor.fetchone()
 
             if my_database:
