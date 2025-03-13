@@ -13,7 +13,10 @@ class ConnectDatabase:
         self.my_base = self.connect()
 
     def connect(self):
-        """"""
+        """
+        Connect to the database store.
+        :return: Connexion to the database.
+        """
         # Load the environment variables from .env
         dotenv_path = find_dotenv(".env")
         load_dotenv(dotenv_path)
@@ -42,7 +45,9 @@ class ConnectDatabase:
             if my_database:
                 my_base.database = "store"  # Connect to my database
             else:
-                my_database = CreateDatabase()  # Create my database
+                CreateDatabase(my_base).create()  # Create my database
                 my_base.database = "store"
+
+            cursor.close()
 
         return my_base
