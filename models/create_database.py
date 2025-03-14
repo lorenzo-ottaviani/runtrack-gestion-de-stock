@@ -16,12 +16,12 @@ class CreateDatabase:
         self.my_base.commit()
         cursor.close()
 
-        # Connexion to the database
+        # Connexion to the database store
         self.my_base.database = "store"
 
         # Create the table category
         cursor = self.my_base.cursor()
-        cursor.execute("USE store;")
+        # cursor.execute("USE store;")
         cursor.execute("CREATE TABLE category (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);")
         self.my_base.commit()
         cursor.close()
